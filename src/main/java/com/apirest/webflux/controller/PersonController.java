@@ -15,35 +15,35 @@ import reactor.core.publisher.Mono;
 @RequestMapping("persons")
 @Slf4j
 public class PersonController {
-    private final PersonService PersonService;
+    private final PersonService personService;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Flux<Person> listAll() {
-        return PersonService.findAll();
+        return personService.findAll();
     }
 
     @GetMapping(path = "{id}")
     @ResponseStatus(HttpStatus.OK)
     public Mono<Person> findById (@PathVariable int id){
-        return PersonService.findById(id);
+        return personService.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Person> save (@Valid @RequestBody Person Person){
-        return PersonService.save(Person);
+        return personService.save(Person);
     }
 
     @PutMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> update (@PathVariable int id , @Valid @RequestBody Person Person){
-        return PersonService.update(Person.withId(id));
+        return personService.update(Person.withId(id));
     }
 
     @DeleteMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> delete (@PathVariable int id){
-        return PersonService.delete(id);
+        return personService.delete(id);
     }
 }

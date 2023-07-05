@@ -9,3 +9,9 @@ logging:
         io.r2dbc.postgresql.QUERY: DEBUG # for queries
         io.r2dbc.postgresql.PARAM: DEBUG # for parameters
 
+reactive.feign:
+    hystrix.enabled: false
+    logger.enabled: true
+    client.config.default.options:
+        connectTimeoutMillis: 3000
+        readTimeoutMillis: 5000
